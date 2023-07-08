@@ -61,7 +61,7 @@ public class RpcServerSocket implements Runnable {
                                     Map<String, Object> response = new HashMap<>();
                                     response.put("data", invoke);
 
-                                    log.info("RPC 请求调用 clazz:{} methodName:{}, response:{}", clazz, methodName, JSON.toJSON(response));
+                                    log.info("RPC 请求调用 clazz:{} methodName:{}, response:{}", clazz.getName(), methodName, JSON.toJSON(response));
                                     // 回写数据
                                     channelHandlerContext.channel().writeAndFlush(response);
                                 }
@@ -78,6 +78,5 @@ public class RpcServerSocket implements Runnable {
             workerGroup.shutdownGracefully();
         }
     }
-
 
 }
